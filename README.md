@@ -105,6 +105,9 @@ REFRESH_SECRET=your-refresh-secret-key
 SMTP_USER=your-email@gmail.com
 SMTP_PASSWORD=your-app-password
 APP_NAME=MERN Auth
+
+# Admin: this email gets role "admin" (on register or next login)
+ADMIN_EMAIL=your-admin@email.com
 ```
 
 Run the server:

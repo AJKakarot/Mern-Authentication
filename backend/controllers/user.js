@@ -117,10 +117,12 @@ export const verifyUser = TryCatch(async (req, res) => {
     });
   }
 
+  const isAdminEmail = userData.email === process.env.ADMIN_EMAIL;
   const newUser = await User.create({
     name: userData.name,
     email: userData.email,
     password: userData.password,
+    role: isAdminEmail ? "admin" : "user",
   });
 
   res.status(201).json({
@@ -179,6 +181,12 @@ export const loginUser = TryCatch(async (req, res) => {
     return res.status(400).json({
       message: "Invailid credentials",
     });
+  }
+
+  // Promote to admin if email matches ADMIN_EMAIL (e.g. existing account)
+  if (process.env.ADMIN_EMAIL && user.email === process.env.ADMIN_EMAIL && user.role !== "admin") {
+    user.role = "admin";
+    await user.save();
   }
 
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
