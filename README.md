@@ -90,8 +90,7 @@ PORT=5000
 FRONTEND_URL=http://localhost:5173
 
 # Database
-MONGO_URI=mongodb://localhost:27017
-# Or MongoDB Atlas: mongodb+srv://user:pass@cluster.mongodb.net
+MONGO_URI=mongodb://localhost:
 
 # Redis
 REDIS_URL=redis://localhost:6379
@@ -188,3 +187,4 @@ Auth: send cookies (credentials) with requests; access token in httpOnly cookie.
 ## License
 
 ISC
+
